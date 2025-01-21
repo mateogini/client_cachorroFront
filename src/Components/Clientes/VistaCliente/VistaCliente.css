@@ -1,0 +1,131 @@
+/* Estilos para la vista de cliente con pago */
+
+.clientePago-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+}
+
+.clientePago-botonClientes,
+.clientePago-botonInicio {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clientePago-botonClientes:hover,
+.clientePago-botonInicio:hover {
+  background-color: #0056b3;
+}
+
+.clientePago-perfil {
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 600px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.clientePago-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.clientePago-nombre {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.clientePago-dni,
+.clientePago-celular,
+.clientePago-deuda {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.clientePago-botonPagar {
+  display: block;
+  margin: 1rem auto;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clientePago-botonPagar:hover {
+  background-color: #218838;
+}
+
+.clientePago-formulario {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.clientePago-formTitulo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.clientePago-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.clientePago-input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.clientePago-botonConfirmar {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.clientePago-botonConfirmar:hover {
+  background-color: #0056b3;
+}
+
+.clientePago-botonCerrar {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clientePago-botonCerrar:hover {
+  background-color: #c82333;
+}

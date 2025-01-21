@@ -1,0 +1,36 @@
+
+.inicioPrenda, .nuevaPrenda {
+  height: 60px;
+  width: 120px;
+  font-size: 15px;
+  background-color: rgb(223, 218, 218);
+  border: 0px;
+  border: 1px solid rgb(0, 0, 0);
+  margin: 10px;
+
+}
+.inicioPrenda:hover, .nuevaPrenda:hover{
+  background-color: rgb(138, 138, 138);
+
+}
+.navPrenda {
+  position: fixed; /* Fija la barra de navegación en la parte superior */
+  top: 0; /* La posiciona en la parte superior */
+  left: 0; /* La alinea al borde izquierdo */
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
+  display: flex;
+  justify-content: space-between;
+}
+.prendasTodas{
+  display: flex;
+}
+.listPrendas{
+margin-top: 100px;
+}
+input.input-busqueda{
+  width: 50%;
+  padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+}

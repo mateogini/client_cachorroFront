@@ -1,0 +1,7 @@
+.titleVenta{
+margin-left: 40%;
+}
+.navNuevaVenta .navPrenda{
+   display: flex;
+   flex-direction: row-reverse;
+}

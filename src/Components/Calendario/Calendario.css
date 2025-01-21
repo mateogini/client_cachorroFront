@@ -1,0 +1,89 @@
+.calendario-contenedor {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .calendario-titulo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .calendario-picker {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .calendario-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .calendario-boton {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .calendario-boton:hover {
+    background-color: #0056b3;
+  }
+  
+  .boton-desactivado {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .calendario-cliente, .calendario-ventas {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .cliente-titulo, .ventas-titulo {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #007bff;
+  }
+  
+  .cliente-detalle, .venta-item p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .calendario-error {
+    margin-top: 10px;
+    color: #d9534f;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .sin-ventas {
+    text-align: center;
+    font-size: 16px;
+    color: #888;
+  }
+  .ventas-titulo.total{
+    color: green;
+  }
+  

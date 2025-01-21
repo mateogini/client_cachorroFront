@@ -1,0 +1,57 @@
+.cardPrenda {
+  width: 200px;
+  background-color: rgb(255, 255, 255);
+}
+.imgPrenda {
+  width: 200px;
+  height: 250px;
+}
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.infoCard p {
+  height: 20px;
+  font-size: 15px;
+  margin: 5px;
+  margin-top: 0px;
+}
+.nombreCard,
+.talleCard {
+  color: black;
+}
+.precioCard {
+  color: black;
+  font-weight: bold;
+}
+.cardPrenda:hover {
+  transform: translateY(-5px); /* Eleva la tarjeta ligeramente */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.74); /* Sombra más intensa */
+}
+p.cardAgotada {
+  background-color: red;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.borrarPrenda:hover{
+  background-color: red;
+  
+
+}
+.editarPrenda:hover{
+  background-color: green;
+}
+.borrarPrenda, .editarPrenda{
+  display: block;
+  margin: 1rem auto;
+  color: black;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
