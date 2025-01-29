@@ -28,6 +28,7 @@ export default function ListClientes() {
         </Link>
       </nav>
       <div className="listClientes">
+        <div className="inputBuscar">
         <h1>Clientes</h1>
         {/* Barra de búsqueda para clientes */}
       <input
@@ -39,10 +40,11 @@ export default function ListClientes() {
         }}
         className="input-busqueda"
       />
+      </div>
         <div className="clientesTodos">
           {filteredClientes.map((cliente) => (
-          <Link to={`/cliente/${cliente.dni}`}>
-            <Cliente key={cliente.dni} cli={cliente} />
+          <Link key={cliente.dni} to={`/cliente/${cliente.dni}`}>
+            <Cliente  cli={cliente} />
             </Link>
           ))
           }

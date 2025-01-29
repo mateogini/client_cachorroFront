@@ -23,6 +23,12 @@
   }
   .clientesTodos{
     display: flex;
+    margin-left: 10%;
+    height: 100%;
+    width: 80%;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en filas */
+    gap: 20px; /* Espacio entre los elementos */
+
   }
   .listClientes{
   margin-top: 100px;

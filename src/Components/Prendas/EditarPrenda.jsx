@@ -7,7 +7,8 @@ export default function EditarPrendaForm({ prenda, onClose }) {
   const [stock, setStock] = useState(prenda.stock);
   const [talle, setTalle] = useState(prenda.talle);
   const [imagen, setImagen] = useState(prenda.imagen);
-
+  const [error, setError] = useState();
+  const [enviada, setEnviada] = useState();
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith("image/")) {
@@ -49,12 +50,14 @@ export default function EditarPrendaForm({ prenda, onClose }) {
         <input
           type="number"
           value={precio}
+          min={0}
           onChange={(e) => setPrecio(e.target.value)}
         />
         <label>Stock</label>
         <input
           type="number"
           value={stock}
+          min={0}
           onChange={(e) => setStock(e.target.value)}
         />
         <label>Talle</label>

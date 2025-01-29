@@ -7,10 +7,12 @@ export default function VistaCliente() {
   const { clienteId } = useParams();
   const [cliente, setCliente] = useState(null);
   const [error, setError] = useState(null);
+  const [compras, setCompras] = useState();
   const [cargando, setCargando] = useState(true);
   const [paga, setPago] = useState("");
   const [menuPagar, setMenuPagar] = useState(false);
-  const [, , , , , , , , , , traerCliente, , pagaDeuda] = useContext(Context);
+  const [, , , , , , , , , , traerCliente, , pagaDeuda, , ventasXDni] =
+    useContext(Context);
 
   useEffect(() => {
     const fetchCliente = async () => {
@@ -28,6 +30,21 @@ export default function VistaCliente() {
     };
     if (!cliente && clienteId) {
       fetchCliente();
+    }
+  }, [clienteId, cliente, traerCliente]); // Solo depende de clienteId y cliente
+  useEffect(() => {
+    const fetchComprasCliente = async () => {
+      try {
+        const data = await ventasXDni(clienteId); // Llama a la API
+        setCompras(data); // Guarda los datos obtenidos
+      } catch (err) {
+        console.error("Error al traer las compras:", err);
+        setError("No se pudo cargar lkas compras. Intenta nuevamente.");
+      } finally {
+      }
+    };
+    if (!cliente && clienteId) {
+      fetchComprasCliente();
     }
   }, [clienteId, cliente, traerCliente]); // Solo depende de clienteId y cliente
 
@@ -89,10 +106,19 @@ export default function VistaCliente() {
         <p className="clientePago-celular">
           <strong>Celular:</strong> {cliente.celular}
         </p>
-        <p className="clientePago-deuda">
+        {cliente.deuda.toFixed(2) < 0 ? ( <>
+          <p className="clientePago-deuda">
+          <strong>A favor:</strong> ${cliente.deuda.toFixed(2) * - 1}
+        </p>
+        </>) : (<>
+          <p className="clientePago-deuda">
           <strong>Deuda:</strong> ${cliente.deuda.toFixed(2)}
         </p>
-        <button onClick={verForm} className="clientePago-botonPagar">Paga</button>
+        </>)}
+        
+        <button onClick={verForm} className="clientePago-botonPagar">
+          Paga
+        </button>
         {menuPagar && (
           <div className="clientePago-formulario">
             <h2 className="clientePago-formTitulo">Paga:</h2>
@@ -100,14 +126,50 @@ export default function VistaCliente() {
             <input
               className="clientePago-input"
               type="number"
+              min={0}
               value={paga}
               onChange={(e) => setPago(e.target.value)}
             />
-            <button onClick={handleClick} className="clientePago-botonConfirmar">Pagar</button>
-            <button onClick={noVerForm} className="clientePago-botonCerrar">Cerrar</button>
+            <button
+              onClick={handleClick}
+              className="clientePago-botonConfirmar"
+            >
+              Pagar
+            </button>
+            <button onClick={noVerForm} className="clientePago-botonCerrar">
+              Cerrar
+            </button>
           </div>
         )}
       </section>
+      <ul>
+      <section>
+  <h2>Compras del cliente:</h2>
+  {compras && compras.length > 0 ? (
+    compras.map((compra, index) => (
+      <div key={index} style={{ marginBottom: "1rem", borderBottom: "1px solid #ccc", paddingBottom: "1rem" }}>
+        <p>
+          <strong>Fecha:</strong> {compra.fecha}
+        </p>
+        <p>
+          <strong>Total:</strong> ${compra.total.toFixed(2)}
+        </p>
+        <p>
+          <strong>Prendas:</strong>
+        </p>
+        <ul>
+          {compra.prendas.map((prenda, idx) => (
+            <li key={idx}>{prenda}</li>
+          ))}
+        </ul>
+      </div>
+    ))
+  ) : (
+    <p>No se han encontrado compras para este cliente.</p>
+  )}
+</section>
+
+      </ul>
     </>
   );
 }

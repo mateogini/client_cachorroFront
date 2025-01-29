@@ -5,17 +5,24 @@
     height: 300px;
     justify-content: space-around;
     margin-left: 40%;
-    margin-top: 5%;
+    margin-top: 13%;
+    color: black;
+    width: 180px;
+    gap: 20px;
+
+}
+a{
+    color: black;
 }
 .homeCliente, .homePrendas, .homeVenta, .homeVentas{
-    height: 50px;
-    width: 180px;
-    font-size: 20px;
+    height: 70px;
+    width: 300px;
+    font-size: 23px;
     background-color: rgb(221, 221, 221);
     border: 0;
     color: black;
     margin-top: 0%;
 }
-.homeCliente:hover, .homePrendas:hover, .homeVenta:hover{
+.homeCliente:hover, .homePrendas:hover, .homeVenta:hover, .homeVentas:hover{
     border: 1px solid rgb(105, 105, 105);
 }

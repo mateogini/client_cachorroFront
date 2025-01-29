@@ -23,9 +23,16 @@
 }
 .prendasTodas{
   display: flex;
+  margin-left: 10%;
+  width: 80%;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 .listPrendas{
 margin-top: 100px;
+}
+.inputBuscar{
+  margin-left: 30%;
 }
 input.input-busqueda{
   width: 50%;
@@ -33,4 +40,8 @@ input.input-busqueda{
     margin-bottom: 10px;
     box-sizing: border-box;
     font-size: 14px;
+}
+.orderByStock{
+  margin-left: 10%;
+  height: 35px;
 }

@@ -5,15 +5,24 @@ import Prenda from "./Prenda";
 import { Context } from "../Context/Context";
 import EditarPrenda from "./EditarPrenda";
 export default function ListPrenda() {
-  const [,,prendas] = useContext(Context);
+  const [,,prendas,,,,,,,,,,,,,fetchDataOrder, fetchData] = useContext(Context);
   const [buscarPrenda, setBuscarPrenda] = useState(""); // Para buscar prendas
   const filteredPrendas = prendas.filter((prenda) =>
     prenda.nombre.toLowerCase().includes(buscarPrenda.toLowerCase())
   );
+  const [orderStock, setOrder] = useState(false);
 
 
-
-
+  const orderByStock = () =>{
+    if(orderStock){
+      setOrder(false);
+      fetchData();
+    }
+    else{
+      setOrder(true);
+      fetchDataOrder();
+    }
+  }
   const [formVisible, setFormVisible] = useState(false);
   const [prendaParaEditar, setPrendaParaEditar] = useState(null);
   const handleEditarPrenda = (prenda) => {
@@ -34,6 +43,7 @@ export default function ListPrenda() {
         </Link>
       </nav>
       <div className="listPrendas">
+        <div className="inputBuscar">
         <h1>Prendas</h1>
         <input
         type="text"
@@ -44,6 +54,15 @@ export default function ListPrenda() {
         }}
         className="input-busqueda"
       />
+      {orderStock ? (<>
+        <button className="orderByStock" onClick={orderByStock}> Ordenar por nombre</button>
+
+      </>) : (<>
+        <button className="orderByStock" onClick={orderByStock}> Ordenar por stock</button>
+
+      </>)}
+        </div>
+       
         <div className="prendasTodas">
           {filteredPrendas.map((prenda) => (
             <Prenda

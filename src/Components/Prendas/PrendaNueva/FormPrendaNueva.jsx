@@ -3,7 +3,7 @@ import { Context } from "../../Context/Context";
 import ".//FormPrendaNueva.css";
 
 export default function FormPrendaNueva() {
-  const [,,,,,prendaNueva] = useContext(Context);
+  const [, , , , , prendaNueva] = useContext(Context);
   const [nombre, setNombre] = useState("");
   const [precio, setPrecio] = useState("");
   const [talle, setTalle] = useState("");
@@ -16,14 +16,11 @@ export default function FormPrendaNueva() {
     const file = e.target.files[0];
     if (file && file.type.startsWith("image/")) {
       setImagen(file);
-    } else {
-      setError("Por favor, selecciona un archivo de imagen.");
-      setEnviada(null);
     }
   };
 
   const handleSubmit = () => {
-    if (!nombre || !precio || !talle || !stock || !imagen) {
+    if (!nombre || !precio || !talle || !stock) {
       setError("Completa todos los campos");
       setEnviada(null);
       return;
@@ -34,22 +31,22 @@ export default function FormPrendaNueva() {
       setEnviada(null);
       return;
     }
+    
+      const formData = new FormData();
+      formData.append("nombre", nombre);
+      formData.append("precio", precio);
+      formData.append("talle", talle);
+      formData.append("stock", stock);
+      formData.append("imagen", imagen);
 
-    const formData = new FormData();
-    formData.append("nombre", nombre);
-    formData.append("precio", precio);
-    formData.append("talle", talle);
-    formData.append("stock", stock);
-    formData.append("imagen", imagen);
-
-    prendaNueva(formData);
-    setNombre("");
-    setPrecio("");
-    setTalle("");
-    setStock("");
-    setImagen(null);
-    setError(null);
-    setEnviada("Prenda agregada correctamente ✅");
+      setNombre("");
+      setPrecio("");
+      setTalle("");
+      setStock("");
+      setImagen(null);
+      setError(null);
+      setEnviada("Prenda agregada correctamente ✅");
+      prendaNueva(formData);
   };
 
   return (
@@ -58,43 +55,39 @@ export default function FormPrendaNueva() {
         <h2>Nueva Prenda</h2>
         <div className="form-field">
           <label>Nombre</label>
-          <input 
-            type="text" 
-            value={nombre} 
-            onChange={(e) => setNombre(e.target.value)} 
+          <input
+            type="text"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
           />
         </div>
         <div className="form-field">
           <label>Precio</label>
-          <input 
-            type="number" 
-            value={precio} 
-            onChange={(e) => setPrecio(e.target.value)} 
+          <input
+            type="number"
+            value={precio}
+            onChange={(e) => setPrecio(e.target.value)}
           />
         </div>
         <div className="form-field">
           <label>Talle</label>
-          <input 
-            type="text" 
-            value={talle} 
-            onChange={(e) => setTalle(e.target.value)} 
+          <input
+            type="text"
+            value={talle}
+            onChange={(e) => setTalle(e.target.value)}
           />
         </div>
         <div className="form-field">
           <label>Stock</label>
-          <input 
-            type="number" 
-            value={stock} 
-            onChange={(e) => setStock(e.target.value)} 
+          <input
+            type="number"
+            value={stock}
+            onChange={(e) => setStock(e.target.value)}
           />
         </div>
         <div className="form-field">
           <label>Imagen</label>
-          <input 
-            type="file" 
-            accept="image/*" 
-            onChange={handleFileChange} 
-          />
+          <input type="file" accept="image/*" onChange={handleFileChange} />
         </div>
         {error && <div className="form-message error">{error}</div>}
         {enviada && <div className="form-message success">{enviada}</div>}
