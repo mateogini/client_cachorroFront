@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://c2760331.ferozo.com/",
   "scripts": {
     "start": "cross-env PORT=3000 react-scripts start",
     "dev": "vite",
