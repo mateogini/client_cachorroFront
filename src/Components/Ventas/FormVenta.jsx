@@ -71,6 +71,7 @@ export default function FormVenta() {
       nuevaVenta(cliente.dni, result, paga, total);
       setCliente(null);
       setPaga(0);
+      setTotal(0);
       setPrendasElegidas([]);
       setVenta("Venta realizada! ✅");
     } else {
