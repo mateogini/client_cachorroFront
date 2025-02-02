@@ -17,15 +17,30 @@ export default function FormVenta() {
   }, [prendasElegidas]);
 
   // Filtrar prendas según el término de búsqueda
-  const filteredPrendas = prendas.filter((prenda) =>
-    prenda.nombre.toLowerCase().includes(buscarPrenda.toLowerCase())
-  );
+  const filteredPrendas = prendas.filter((prenda) => {
+    // Excluir las prendas con stock 1 que ya fueron seleccionadas
+    const yaSeleccionada = prendasElegidas.some(
+      (p) => p.codigo === prenda.codigo
+    );
+    return (
+      prenda.nombre.toLowerCase().includes(buscarPrenda.toLowerCase()) &&
+      prenda.stock > 0 &&
+      (!yaSeleccionada || prenda.stock > 1) // Si ya fue seleccionada y tiene stock 1, no aparece
+    );
+  });
 
   // Agregar prenda seleccionada
   const handleSelectPrenda = (prenda) => {
-    setPrendasElegidas((prev) => [...prev, prenda]); // Permite añadir prendas sin verificar duplicados
-  setBuscarPrenda(""); // Limpiar barra de búsqueda
-  setMenuVisible(false); // Ocultar menú después de seleccionar
+    setPrendasElegidas((prev) => {
+      // Si la prenda tiene stock 1 y ya está en la lista, no la agregamos de nuevo
+      if (prenda.stock === 1 && prev.some((p) => p.codigo === prenda.codigo)) {
+        return prev;
+      }
+      return [...prev, prenda];
+    });
+
+    setBuscarPrenda(""); // Limpiar barra de búsqueda
+    setMenuVisible(false); // Ocultar menú después de seleccionar
   };
 
   // Eliminar prenda de la lista de seleccionadas
