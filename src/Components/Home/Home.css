@@ -35,9 +35,8 @@ a{
     justify-content: space-around;
     color: black;
     gap: 20px;
-    position: fixed; /* Fija la barra de navegación en la parte superior */
-    top: 200px; /* La posiciona en la parte superior */
-    left:200px; /* La alinea al borde izquierdo */
+    position: fixed; /* Fija la barra de nav al borde izquierdo */
     width: 100%; /* Ocupa todo el ancho de la pantalla */
+    left: 15%;
 }
 }
