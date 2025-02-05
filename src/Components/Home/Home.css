@@ -9,7 +9,6 @@
     position: fixed; /* Fija la barra de navegación en la parte superior */
     top: 20%; /* La posiciona en la parte superior */
     left: 40%; /* La alinea al borde izquierdo */
-    width: 100%; /* Ocupa todo el ancho de la pantalla */
 
 }
 a{
@@ -36,7 +35,6 @@ a{
     color: black;
     gap: 20px;
     position: fixed; /* Fija la barra de nav al borde izquierdo */
-    width: 100%; /* Ocupa todo el ancho de la pantalla */
     left: 15%;
 }
 }
