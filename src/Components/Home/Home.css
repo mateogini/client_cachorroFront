@@ -4,11 +4,12 @@
     flex-direction: column;
     height: 300px;
     justify-content: space-around;
-    margin-left: 40%;
-    margin-top: 13%;
     color: black;
-    width: 180px;
     gap: 20px;
+    position: fixed; /* Fija la barra de navegación en la parte superior */
+    top: 20%; /* La posiciona en la parte superior */
+    left: 40%; /* La alinea al borde izquierdo */
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
 
 }
 a{
@@ -25,4 +26,18 @@ a{
 }
 .homeCliente:hover, .homePrendas:hover, .homeVenta:hover, .homeVentas:hover{
     border: 1px solid rgb(105, 105, 105);
+}
+@media screen and (max-width: 767px) {
+.home{
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: space-around;
+    color: black;
+    gap: 20px;
+    position: fixed; /* Fija la barra de navegación en la parte superior */
+    top: 200px; /* La posiciona en la parte superior */
+    left:200px; /* La alinea al borde izquierdo */
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+}
 }
