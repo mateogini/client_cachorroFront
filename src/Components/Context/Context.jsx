@@ -12,7 +12,7 @@ export function ContextProvider({ children }) {
   // PRENDAS
   const fetchData = () => {
     return axios
-      .get("http://46.202.150.123:8080/prenda")
+      .get("http://localhost:8080/prenda")
       .then((response) => setPrendas(response.data));
 
   };
@@ -21,14 +21,14 @@ export function ContextProvider({ children }) {
   }, []);
   const fetchDataOrder = () => {
     return axios
-      .get("http://46.202.150.123:8080/prenda/asc")
+      .get("http://localhost:8080/prenda/asc")
       .then((response) => setPrendas(response.data));
 
   };
 
   const borrarPrenda = (codigo) => {
     axios
-      .delete(`http://46.202.150.123:8080/prenda/${codigo}`)
+      .delete(`http://localhost:8080/prenda/${codigo}`)
       .then(() => {
         console.log(`Prenda con código ${codigo} eliminada.`);
         fetchData(); // Recargar prendas después de eliminar
@@ -40,7 +40,7 @@ export function ContextProvider({ children }) {
 
   const prendaNueva = (formData) => {
     axios
-      .post("http://46.202.150.123:8080/prenda", formData, {
+      .post("http://localhost:8080/prenda", formData, {
         headers: {
           "Content-Type": "multipart/form-data", // Muy importante para archivos
         },
@@ -55,7 +55,7 @@ export function ContextProvider({ children }) {
   };
   const editarPrenda = (codigo, formData) => {
     axios
-      .put(`http://46.202.150.123:8080/prenda/${codigo}`, formData, {
+      .put(`http://localhost:8080/prenda/${codigo}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data", // Muy importante para archivos
         },
@@ -72,16 +72,33 @@ export function ContextProvider({ children }) {
   // Clientes
   const fetchDataClientes = () => {
     return axios
-      .get("http://46.202.150.123:8080/cliente")
+      .get("http://localhost:8080/cliente")
       .then((response) => setClientes(response.data));
   };
   useEffect(() => {
     fetchDataClientes();
   }, []);
+  const editarCliente = (formData) =>{
+    return axios
+      .put("http://localhost:8080/cliente", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log("Cliente editado:", response.data);
+        // Llamar a fetchDataClientes después de agregar el cliente
+        fetchDataClientes();
+      })
+      .catch((error) => {
+        console.error("El cliente no logro editarse:", error);
+        throw error; // Lanzar el error para que sea manejado en el componente
+      });
+  }
 
   const clienteNuevo = (formData) => {
     return axios
-      .post("http://46.202.150.123:8080/cliente", formData, {
+      .post("http://localhost:8080/cliente", formData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -98,7 +115,7 @@ export function ContextProvider({ children }) {
   };
   const borrarCliente = (dni) => {
     axios
-      .delete(`http://46.202.150.123:8080/cliente/${dni}`)
+      .delete(`http://localhost:8080/cliente/${dni}`)
       .then(() => {
         console.log(`Cliente con dni ${dni} eliminado.`);
         fetchDataClientes(); // Recargar clientes después de eliminar
@@ -110,7 +127,7 @@ export function ContextProvider({ children }) {
 
     const traerCliente = (dni) => {
       return axios
-        .get(`http://46.202.150.123:8080/cliente/${dni}`)
+        .get(`http://localhost:8080/cliente/${dni}`)
         .then((response) => {
           console.log(`Cliente con dni ${dni} traido.`);
           fetchDataClientes(); // Si esta función es necesaria
@@ -123,7 +140,7 @@ export function ContextProvider({ children }) {
     };
     const pagaDeuda = (dni, formData) => {
       axios
-      .put(`http://46.202.150.123:8080/cliente/${dni}/paga`, formData, {
+      .put(`http://localhost:8080/cliente/${dni}/paga`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -145,7 +162,7 @@ export function ContextProvider({ children }) {
         paga=0;
       }
       return axios
-        .post(`http://46.202.150.123:8080/venta/${dni}?paga=${paga}&total=${total}`, prendas, {
+        .post(`http://localhost:8080/venta/${dni}?paga=${paga}&total=${total}`, prendas, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -163,7 +180,7 @@ export function ContextProvider({ children }) {
 
     const buscarVentas = (fecha) =>{
       return axios
-      .get(`http://46.202.150.123:8080/venta/fecha/${fecha}`)
+      .get(`http://localhost:8080/venta/fecha/${fecha}`)
       .then((response) => {
         console.log(`Ventas el ${fecha} traidas.`);
         return response.data; // Devuelve los datos del cliente
@@ -175,7 +192,7 @@ export function ContextProvider({ children }) {
     }
     const ventasXDni = (dni) =>{
       return axios
-      .get(`http://46.202.150.123:8080/venta/${dni}`)
+      .get(`http://localhost:8080/venta/${dni}`)
       .then((response) => {
         console.log(`Compras del el ${dni} traidas.`);
         return response.data; // Devuelve los datos del cliente
@@ -205,7 +222,8 @@ export function ContextProvider({ children }) {
           buscarVentas,
           ventasXDni,
           fetchDataOrder,
-          fetchData
+          fetchData, 
+          editarCliente
         ]}
       >
         {children}

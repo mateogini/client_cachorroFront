@@ -59,6 +59,7 @@ export default function FormClienteNuevo() {
         <div className="form-field">
           <label>DNI</label>
           <input 
+          min={1}
             type="number" 
             value={dni} 
             onChange={(e) => setDni(e.target.value)} 
