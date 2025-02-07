@@ -80,7 +80,7 @@ export function ContextProvider({ children }) {
   }, []);
   const editarCliente = (viejodni, formData) =>{
     return axios
-      .put(`http://46.202.150.123:8080/cliente${viejodni}`, formData, {
+      .put(`http://46.202.150.123:8080/cliente/${viejodni}`, formData, {
         headers: {
           "Content-Type": "application/json",
         },
