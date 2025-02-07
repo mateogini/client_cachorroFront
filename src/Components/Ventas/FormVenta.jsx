@@ -84,9 +84,14 @@ export default function FormVenta() {
           result.push(prenda.codigo);
         });
       }
-      
-      setError(null);
+      if(cliente!=null){
       nuevaVenta(cliente.dni, result, paga, total);
+      }
+      if(cliente==null){
+              nuevaVenta(0, result, paga, total);
+
+      }
+      setError(null);
       setCliente(null);
       setPaga(0);
       setTotal(0);

@@ -91,10 +91,7 @@ width: 400px;
   }
   @media screen and (max-width: 767px) {
     .form{
-    position: fixed; /* Fija la barra de navegación en la parte superior */
-    top: 130px; /* La posiciona en la parte superior */
-    left: 50px; /* La alinea al borde izquierdo */
     width: 80%; /* Ocupa todo el ancho de la pantalla */
-    margin-left: 0;
+    margin-left: 10%;
   }
 }
