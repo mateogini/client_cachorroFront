@@ -77,11 +77,14 @@ export default function FormVenta() {
   const [venta, setVenta] = useState();
   const [, , , , , , , , nuevaVenta] = useContext(Context);
   const realizarVenta = () => {
-    if (prendasElegidas.length > 0) {
+    if (total != 0) {
       const result = [];
-      prendasElegidas.forEach((prenda) => {
-        result.push(prenda.codigo);
-      });
+      if(prendasElegidas.length > 0){
+        prendasElegidas.forEach((prenda) => {
+          result.push(prenda.codigo);
+        });
+      }
+      
       setError(null);
       nuevaVenta(cliente.dni, result, paga, total);
       setCliente(null);
@@ -90,7 +93,7 @@ export default function FormVenta() {
       setPrendasElegidas([]);
       setVenta("Venta realizada! ✅");
     } else {
-      setError("Completa al menos la prenda!");
+      setError("Completa al menos el total!");
       setVenta("");
     }
   };
