@@ -16,6 +16,7 @@ export default function VistaCliente() {
   const [nuevoApellido, setNuevoApellido] = useState("");
   const [nuevoCelular, setNuevoCelular] = useState("");
   const [nuevoDni, setNuevodni] = useState("");
+  const [viejoDni, setViejoDni] = useState("");
 
   
   const [, , , , , , , , , , traerCliente, , pagaDeuda, , ventasXDni,,, editarCliente] = useContext(Context);
@@ -27,6 +28,7 @@ export default function VistaCliente() {
         const data = await traerCliente(clienteId);
         setCliente(data);
         setNuevoNombre(data.nombre);
+        setViejoDni(data.dni);
         setNuevodni(data.dni);
         setNuevoApellido(data.apellido);
         setNuevoCelular(data.celular);
@@ -66,7 +68,7 @@ export default function VistaCliente() {
         apellido: nuevoApellido,
         celular: nuevoCelular
       };
-      await editarCliente(datosEditados);
+      await editarCliente(viejoDni,datosEditados);
       setCliente((prevCliente) => ({ ...prevCliente, ...datosEditados }));
       setMostrarFormularioEditar(false);
     } catch (error) {
